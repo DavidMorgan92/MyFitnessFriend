@@ -24,32 +24,16 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         {% with url_name=request.resolver_match.url_name %}
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link {% if url_name == 'home_index' %}active{% endif %}"
-              {% if url_name == 'home_index' %}aria-current="page"{% endif %}
-              href="{% url 'home_index' %}">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if url_name == 'food_diary_index' %}active{% endif %}"
-              {% if url_name == 'food_diary_index' %}aria-current="page"{% endif %}
-              href="{% url 'food_diary_index' %}">Food Diary</a>
-          </li>
+          {% include 'nav_item.html' with route_name='home_index' link_text='Home' %}
+          {% include 'nav_item.html' with route_name='food_diary_index' link_text='Food Diary' %}
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
           {% if request.user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'my_profile_index' %}">My Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_logout' %}">Log out</a>
-          </li>
+          {% include 'nav_item.html' with route_name='my_profile_index' link_text='My Profile' %}
+          {% include 'nav_item.html' with route_name='account_logout' link_text='Log Out' %}
           {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-          </li>
+          {% include 'nav_item.html' with route_name='account_login' link_text='Log In' %}
+          {% include 'nav_item.html' with route_name='account_signup' link_text='Register' %}
           {% endif %}
         </ul>
         {% endwith %}

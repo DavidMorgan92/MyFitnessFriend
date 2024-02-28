@@ -1,0 +1,5 @@
+<li class="nav-item">
+  <a class="nav-link {% if url_name == route_name %}active{% endif %}"
+    {% if url_name == route_name %}aria-current="page"{% endif %}
+    href="{% url route_name %}">{{ link_text }}</a>
+</li>
