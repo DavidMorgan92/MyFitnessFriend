@@ -29,6 +29,11 @@
               {% if url_name == 'home_index' %}aria-current="page"{% endif %}
               href="{% url 'home_index' %}">Home</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link {% if url_name == 'food_diary_index' %}active{% endif %}"
+              {% if url_name == 'food_diary_index' %}aria-current="page"{% endif %}
+              href="{% url 'food_diary_index' %}">Food Diary</a>
+          </li>
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
           {% if request.user.is_authenticated %}

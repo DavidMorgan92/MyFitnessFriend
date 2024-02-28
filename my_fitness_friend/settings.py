@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'home',
     'my_profile',
+    'food_diary',
 ]
 
 MIDDLEWARE = (
