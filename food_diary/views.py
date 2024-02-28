@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from allauth.account.decorators import login_required
 from .models import FoodDiary, FoodDiaryEntry
 
 
+@login_required
 def index(request):
     food_diary_query = FoodDiary.objects.filter(owner__exact=request.user.id)
 
@@ -31,5 +33,6 @@ def index(request):
     return render(request, 'food_diary/index.html', context)
 
 
+@login_required
 def delete_entry(request, entry_id):
     return render(request, 'food_diary/index.html')
