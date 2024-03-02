@@ -4,128 +4,152 @@
 
 <h1>Food Diary</h1>
 
-<form method="get" action="{% url 'food_diary_index' %}">
-  <label for="date">Date</label>
-  <input type="date" id="date" name="date">
-  <button type="submit">Submit</button>
+<form id="date-form" method="get" action="{% url 'food_diary_index' %}" class="row row-cols-sm-auto g-3 my-3">
+  <label for="date" class="col-form-label d-none d-sm-block">Date</label>
+  
+  <div class="col-12">
+    <input type="date" id="date" name="date" class="form-control" value="{{ date }}">
+  </div>
+
+  <!-- Show submit button if JS is disabled -->
+  <noscript>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </noscript>
 </form>
 
-<table class="table">
-  <tr>
-    <td>Breakfast</td>
-    <td>Calories<br><small>kcal</small></td>
-    <td>Carbs<br><small>g</small></td>
-    <td>Fat<br><small>g</small></td>
-    <td>Protein<br><small>g</small></td>
-    <td>Sodium<br><small>mg</small></td>
-    <td>Sugar<br><small>g</small></td>
-    <td></td>
-  </tr>
-  {% for item in breakfast %}
-  <tr>
-    <td>{{ item.name }}</td>
-    <td>{{ item.calories }}</td>
-    <td>{{ item.carbs_grams }}</td>
-    <td>{{ item.fat_grams }}</td>
-    <td>{{ item.protein_grams }}</td>
-    <td>{{ item.sodium_milligrams }}</td>
-    <td>{{ item.sugar_grams }}</td>
-    <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
-  </tr>
-  {% endfor %}
-  <tr>
-    <td>
-      <a class="btn btn-link" href="#">Add Food</a>
-    </td>
-    <td>total calories</td>
-    <td>total carbs</td>
-    <td>total fat</td>
-    <td>total protein</td>
-    <td>total sodium</td>
-    <td>total sugar</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td colspan="8">Lunch</td>
-  </tr>
-  {% for item in lunch %}
-  <tr>
-    <td>{{ item.name }}</td>
-    <td>{{ item.calories }}</td>
-    <td>{{ item.carbs_grams }}</td>
-    <td>{{ item.fat_grams }}</td>
-    <td>{{ item.protein_grams }}</td>
-    <td>{{ item.sodium_milligrams }}</td>
-    <td>{{ item.sugar_grams }}</td>
-    <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
-  </tr>
-  {% endfor %}
-  <tr>
-    <td>
-      <a class="btn btn-link" href="#">Add Food</a>
-    </td>
-    <td>total calories</td>
-    <td>total carbs</td>
-    <td>total fat</td>
-    <td>total protein</td>
-    <td>total sodium</td>
-    <td>total sugar</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td colspan="8">Dinner</td>
-  </tr>  
-  {% for item in dinner %}
-  <tr>
-    <td>{{ item.name }}</td>
-    <td>{{ item.calories }}</td>
-    <td>{{ item.carbs_grams }}</td>
-    <td>{{ item.fat_grams }}</td>
-    <td>{{ item.protein_grams }}</td>
-    <td>{{ item.sodium_milligrams }}</td>
-    <td>{{ item.sugar_grams }}</td>
-    <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
-  </tr>
-  {% endfor %}
-  <tr>
-    <td>
-      <a class="btn btn-link" href="#">Add Food</a>
-    </td>
-    <td>total calories</td>
-    <td>total carbs</td>
-    <td>total fat</td>
-    <td>total protein</td>
-    <td>total sodium</td>
-    <td>total sugar</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td colspan="8">Snacks</td>
-  </tr>
-  {% for item in snacks %}
-  <tr>
-    <td>{{ item.name }}</td>
-    <td>{{ item.calories }}</td>
-    <td>{{ item.carbs_grams }}</td>
-    <td>{{ item.fat_grams }}</td>
-    <td>{{ item.protein_grams }}</td>
-    <td>{{ item.sodium_milligrams }}</td>
-    <td>{{ item.sugar_grams }}</td>
-    <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
-  </tr>
-  {% endfor %}
-  <tr>
-    <td>
-      <a class="btn btn-link" href="#">Add Food</a>
-    </td>
-    <td>total calories</td>
-    <td>total carbs</td>
-    <td>total fat</td>
-    <td>total protein</td>
-    <td>total sodium</td>
-    <td>total sugar</td>
-    <td></td>
-  </tr>
-</table>
+<div class="table-responsive">
+  <table class="table">
+    <tr>
+      <td>Breakfast</td>
+      <td>Calories<br><small>kcal</small></td>
+      <td>Carbs<br><small>g</small></td>
+      <td>Fat<br><small>g</small></td>
+      <td>Protein<br><small>g</small></td>
+      <td>Sodium<br><small>mg</small></td>
+      <td>Sugar<br><small>g</small></td>
+      <td></td>
+    </tr>
+    {% for item in breakfast %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.calories }}</td>
+      <td>{{ item.carbs_grams }}</td>
+      <td>{{ item.fat_grams }}</td>
+      <td>{{ item.protein_grams }}</td>
+      <td>{{ item.sodium_milligrams }}</td>
+      <td>{{ item.sugar_grams }}</td>
+      <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>
+        <a class="btn btn-link" href="#">Add Food</a>
+      </td>
+      <td>total calories</td>
+      <td>total carbs</td>
+      <td>total fat</td>
+      <td>total protein</td>
+      <td>total sodium</td>
+      <td>total sugar</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="8">Lunch</td>
+    </tr>
+    {% for item in lunch %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.calories }}</td>
+      <td>{{ item.carbs_grams }}</td>
+      <td>{{ item.fat_grams }}</td>
+      <td>{{ item.protein_grams }}</td>
+      <td>{{ item.sodium_milligrams }}</td>
+      <td>{{ item.sugar_grams }}</td>
+      <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>
+        <a class="btn btn-link" href="#">Add Food</a>
+      </td>
+      <td>total calories</td>
+      <td>total carbs</td>
+      <td>total fat</td>
+      <td>total protein</td>
+      <td>total sodium</td>
+      <td>total sugar</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="8">Dinner</td>
+    </tr>  
+    {% for item in dinner %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.calories }}</td>
+      <td>{{ item.carbs_grams }}</td>
+      <td>{{ item.fat_grams }}</td>
+      <td>{{ item.protein_grams }}</td>
+      <td>{{ item.sodium_milligrams }}</td>
+      <td>{{ item.sugar_grams }}</td>
+      <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>
+        <a class="btn btn-link" href="#">Add Food</a>
+      </td>
+      <td>total calories</td>
+      <td>total carbs</td>
+      <td>total fat</td>
+      <td>total protein</td>
+      <td>total sodium</td>
+      <td>total sugar</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="8">Snacks</td>
+    </tr>
+    {% for item in snacks %}
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.calories }}</td>
+      <td>{{ item.carbs_grams }}</td>
+      <td>{{ item.fat_grams }}</td>
+      <td>{{ item.protein_grams }}</td>
+      <td>{{ item.sodium_milligrams }}</td>
+      <td>{{ item.sugar_grams }}</td>
+      <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td>
+        <a class="btn btn-link" href="#">Add Food</a>
+      </td>
+      <td>total calories</td>
+      <td>total carbs</td>
+      <td>total fat</td>
+      <td>total protein</td>
+      <td>total sodium</td>
+      <td>total sugar</td>
+      <td></td>
+    </tr>
+  </table>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+  // Submit the date form when the date is changed
+  $(function () {
+    $('#date').on('change', function () {
+      $('#date-form').submit();
+    });
+  });
+</script>
 
 {% endblock %}
