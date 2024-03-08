@@ -4,6 +4,7 @@ from allauth.account.decorators import login_required
 import datetime
 from .models import FoodDiary, FoodDiaryEntry
 from .forms import AddEntryForm
+from url_tools import reverse_with_params
 
 
 @login_required
@@ -46,14 +47,14 @@ def delete_entry(request, entry_id):
 
 
 @login_required
-def add_entry(request, date):
+def add_entry(request, date: datetime.date):
     if request.method == 'POST':
         form = AddEntryForm(request.POST)
 
         if form.is_valid():
             # Save new entry in database
 
-            return redirect(reverse('food_diary_index'))
+            return redirect(reverse_with_params('food_diary_index', get={'date': date.strftime('%Y-%m-%d')}))
     else:
         form = AddEntryForm()
 
