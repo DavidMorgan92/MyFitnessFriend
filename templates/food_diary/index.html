@@ -8,7 +8,7 @@
   <label for="date" class="col-form-label d-none d-sm-block">Date</label>
   
   <div class="col-12">
-    <input type="date" id="date" name="date" class="form-control" value="{{ date }}">
+    <input type="date" id="date" name="date" class="form-control" value="{{ date|date:'Y-m-d' }}">
   </div>
 
   <!-- Show submit button if JS is disabled -->
@@ -45,7 +45,7 @@
     {% endfor %}
     <tr>
       <td>
-        <a class="btn btn-link" href="#">Add Food</a>
+        <a class="btn btn-link" href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_BREAKFAST }}">Add Food</a>
       </td>
       <td>total calories</td>
       <td>total carbs</td>
@@ -72,7 +72,7 @@
     {% endfor %}
     <tr>
       <td>
-        <a class="btn btn-link" href="#">Add Food</a>
+        <a class="btn btn-link" href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_LUNCH }}">Add Food</a>
       </td>
       <td>total calories</td>
       <td>total carbs</td>
@@ -99,7 +99,7 @@
     {% endfor %}
     <tr>
       <td>
-        <a class="btn btn-link" href="#">Add Food</a>
+        <a class="btn btn-link" href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_DINNER }}">Add Food</a>
       </td>
       <td>total calories</td>
       <td>total carbs</td>
@@ -126,7 +126,7 @@
     {% endfor %}
     <tr>
       <td>
-        <a class="btn btn-link" href="#">Add Food</a>
+        <a class="btn btn-link" href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_SNACKS }}">Add Food</a>
       </td>
       <td>total calories</td>
       <td>total carbs</td>
