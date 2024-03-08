@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -78,6 +79,8 @@ TEMPLATES = [
         },
     },
 ]
+
+FORM_RENDERER = 'my_fitness_friend.bootstrap_form_renderer.BootstrapFormRenderer'
 
 WSGI_APPLICATION = 'my_fitness_friend.wsgi.application'
 
