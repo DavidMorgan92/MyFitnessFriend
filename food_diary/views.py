@@ -49,14 +49,25 @@ def delete_entry(request, entry_id):
 @login_required
 def add_entry(request, date: datetime.date):
     if request.method == 'POST':
+        # Load diary for date given
+        food_diary = FoodDiary.objects.get_or_create(
+            owner=request.user,
+            date=date)[0]
+
         form = AddEntryForm(request.POST)
 
         if form.is_valid():
             # Save new entry in database
+            entry = FoodDiaryEntry(food_diary=food_diary, **form.cleaned_data)
+            entry.save()
 
             return redirect(reverse_with_params('food_diary_index', get={'date': date.strftime('%Y-%m-%d')}))
     else:
-        form = AddEntryForm()
+        initial = {
+            'meal': request.GET['meal'] if request.GET and 'meal' in request.GET else None
+        }
+
+        form = AddEntryForm(initial=initial)
 
     context = {
         'form': form,
