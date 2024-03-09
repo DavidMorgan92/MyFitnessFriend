@@ -4,7 +4,7 @@
 
 <h1>Add Food Diary Entry</h1>
 
-<form action="{% url 'food_diary_add_entry' date %}" method="post" class="my-3">
+<form action="{% url 'food_diary_add_entry' date %}" method="post">
   {% csrf_token %}
 
   {{ form }}
