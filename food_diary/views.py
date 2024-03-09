@@ -36,6 +36,76 @@ def index(request):
             meal__exact=FoodDiaryEntry.Meal.DINNER))
         context['snacks'] = list(food_diary.fooddiaryentry_set.filter(
             meal__exact=FoodDiaryEntry.Meal.SNACKS))
+        
+    # TODO The below logic is unpleasant; need to improve its concision; there's probably a way to do it with comprehensions
+    breakfast_values = [(e.calories, e.carbs_grams, e.fat_grams, e.protein_grams, e.sodium_milligrams, e.sugar_grams) for e in context['breakfast']]
+    breakfast_values.append((0, 0, 0, 0, 0, 0))
+    breakfast_totals_t = [sum(x) for x in zip(*breakfast_values)]
+
+    lunch_values = [(e.calories, e.carbs_grams, e.fat_grams, e.protein_grams, e.sodium_milligrams, e.sugar_grams) for e in context['lunch']]
+    lunch_values.append((0, 0, 0, 0, 0, 0))
+    lunch_totals_t = [sum(x) for x in zip(*lunch_values)]
+
+    dinner_values = [(e.calories, e.carbs_grams, e.fat_grams, e.protein_grams, e.sodium_milligrams, e.sugar_grams) for e in context['dinner']]
+    dinner_values.append((0, 0, 0, 0, 0, 0))
+    dinner_totals_t = [sum(x) for x in zip(*dinner_values)]
+
+    snacks_values = [(e.calories, e.carbs_grams, e.fat_grams, e.protein_grams, e.sodium_milligrams, e.sugar_grams) for e in context['snacks']]
+    snacks_values.append((0, 0, 0, 0, 0, 0))
+    snacks_totals_t = [sum(x) for x in zip(*snacks_values)]
+
+    breakfast_totals = {
+        'calories': breakfast_totals_t[0],
+        'carbs_grams': breakfast_totals_t[1],
+        'fat_grams': breakfast_totals_t[2],
+        'protein_grams': breakfast_totals_t[3],
+        'sodium_milligrams': breakfast_totals_t[4],
+        'sugar_grams': breakfast_totals_t[5],
+    }
+
+    lunch_totals = {
+        'calories': lunch_totals_t[0],
+        'carbs_grams': lunch_totals_t[1],
+        'fat_grams': lunch_totals_t[2],
+        'protein_grams': lunch_totals_t[3],
+        'sodium_milligrams': lunch_totals_t[4],
+        'sugar_grams': lunch_totals_t[5],
+    }
+
+    dinner_totals = {
+        'calories': dinner_totals_t[0],
+        'carbs_grams': dinner_totals_t[1],
+        'fat_grams': dinner_totals_t[2],
+        'protein_grams': dinner_totals_t[3],
+        'sodium_milligrams': dinner_totals_t[4],
+        'sugar_grams': dinner_totals_t[5],
+    }
+
+    snacks_totals = {
+        'calories': snacks_totals_t[0],
+        'carbs_grams': snacks_totals_t[1],
+        'fat_grams': snacks_totals_t[2],
+        'protein_grams': snacks_totals_t[3],
+        'sodium_milligrams': snacks_totals_t[4],
+        'sugar_grams': snacks_totals_t[5],
+    }
+
+    day_totals = {
+        'calories': breakfast_totals['calories'] + lunch_totals['calories'] + dinner_totals['calories'] + snacks_totals['calories'],
+        'carbs_grams': breakfast_totals['carbs_grams'] + lunch_totals['carbs_grams'] + dinner_totals['carbs_grams'] + snacks_totals['carbs_grams'],
+        'fat_grams': breakfast_totals['fat_grams'] + lunch_totals['fat_grams'] + dinner_totals['fat_grams'] + snacks_totals['fat_grams'],
+        'protein_grams': breakfast_totals['protein_grams'] + lunch_totals['protein_grams'] + dinner_totals['protein_grams'] + snacks_totals['protein_grams'],
+        'sodium_milligrams': breakfast_totals['sodium_milligrams'] + lunch_totals['sodium_milligrams'] + dinner_totals['sodium_milligrams'] + snacks_totals['sodium_milligrams'],
+        'sugar_grams': breakfast_totals['sugar_grams'] + lunch_totals['sugar_grams'] + dinner_totals['sugar_grams'] + snacks_totals['sugar_grams'],
+    }
+
+    context['totals'] = {
+        'breakfast': breakfast_totals,
+        'lunch': lunch_totals,
+        'dinner': dinner_totals,
+        'snacks': snacks_totals,
+        'day': day_totals,
+    }
 
     return render(request, 'food_diary/index.html', context)
 

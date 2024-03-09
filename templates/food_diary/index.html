@@ -20,120 +20,130 @@
 </form>
 
 <div class="table-responsive">
-  <table class="table">
+  <table class="table text-center">
     <tr>
-      <td>Breakfast</td>
-      <td>Calories<br><small>kcal</small></td>
-      <td>Carbs<br><small>g</small></td>
-      <td>Fat<br><small>g</small></td>
-      <td>Protein<br><small>g</small></td>
-      <td>Sodium<br><small>mg</small></td>
-      <td>Sugar<br><small>g</small></td>
+      <td class="h5 text-start align-bottom">Breakfast</td>
+      <td class="text-bg-primary">Calories<br><small class="text-white-50">kcal</small></td>
+      <td class="text-bg-primary">Carbs<br><small class="text-white-50">g</small></td>
+      <td class="text-bg-primary">Fat<br><small class="text-white-50">g</small></td>
+      <td class="text-bg-primary">Protein<br><small class="text-white-50">g</small></td>
+      <td class="text-bg-primary">Sodium<br><small class="text-white-50">mg</small></td>
+      <td class="text-bg-primary">Sugar<br><small class="text-white-50">g</small></td>
       <td></td>
     </tr>
     {% for item in breakfast %}
     <tr>
-      <td>{{ item.name }}</td>
+      <td class="text-start">{{ item.name }}</td>
       <td>{{ item.calories }}</td>
       <td>{{ item.carbs_grams }}</td>
       <td>{{ item.fat_grams }}</td>
       <td>{{ item.protein_grams }}</td>
       <td>{{ item.sodium_milligrams }}</td>
       <td>{{ item.sugar_grams }}</td>
-      <td><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
+      <td class="text-end"><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
-      <td>
-        <a class="btn btn-link" href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_BREAKFAST }}">Add Food</a>
+      <td class="text-start">
+        <a href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_BREAKFAST }}">Add Food</a>
       </td>
-      <td>total calories</td>
-      <td>total carbs</td>
-      <td>total fat</td>
-      <td>total protein</td>
-      <td>total sodium</td>
-      <td>total sugar</td>
+      <td class="table-info">{{ totals.breakfast.calories }}</td>
+      <td class="table-info">{{ totals.breakfast.carbs_grams }}</td>
+      <td class="table-info">{{ totals.breakfast.fat_grams }}</td>
+      <td class="table-info">{{ totals.breakfast.protein_grams }}</td>
+      <td class="table-info">{{ totals.breakfast.sodium_milligrams }}</td>
+      <td class="table-info">{{ totals.breakfast.sugar_grams }}</td>
       <td></td>
     </tr>
     <tr>
-      <td colspan="8">Lunch</td>
+      <td colspan="8" class="h5 text-start">Lunch</td>
     </tr>
     {% for item in lunch %}
     <tr>
-      <td>{{ item.name }}</td>
+      <td class="text-start">{{ item.name }}</td>
       <td>{{ item.calories }}</td>
       <td>{{ item.carbs_grams }}</td>
       <td>{{ item.fat_grams }}</td>
       <td>{{ item.protein_grams }}</td>
       <td>{{ item.sodium_milligrams }}</td>
       <td>{{ item.sugar_grams }}</td>
-      <td><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
+      <td class="text-end"><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
-      <td>
-        <a class="btn btn-link" href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_LUNCH }}">Add Food</a>
+      <td class="text-start">
+        <a href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_LUNCH }}">Add Food</a>
       </td>
-      <td>total calories</td>
-      <td>total carbs</td>
-      <td>total fat</td>
-      <td>total protein</td>
-      <td>total sodium</td>
-      <td>total sugar</td>
+      <td class="table-info">{{ totals.lunch.calories }}</td>
+      <td class="table-info">{{ totals.lunch.carbs_grams }}</td>
+      <td class="table-info">{{ totals.lunch.fat_grams }}</td>
+      <td class="table-info">{{ totals.lunch.protein_grams }}</td>
+      <td class="table-info">{{ totals.lunch.sodium_milligrams }}</td>
+      <td class="table-info">{{ totals.lunch.sugar_grams }}</td>
       <td></td>
     </tr>
     <tr>
-      <td colspan="8">Dinner</td>
+      <td colspan="8" class="h5 text-start">Dinner</td>
     </tr>  
     {% for item in dinner %}
     <tr>
-      <td>{{ item.name }}</td>
+      <td class="text-start">{{ item.name }}</td>
       <td>{{ item.calories }}</td>
       <td>{{ item.carbs_grams }}</td>
       <td>{{ item.fat_grams }}</td>
       <td>{{ item.protein_grams }}</td>
       <td>{{ item.sodium_milligrams }}</td>
       <td>{{ item.sugar_grams }}</td>
-      <td><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
+      <td class="text-end"><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
-      <td>
-        <a class="btn btn-link" href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_DINNER }}">Add Food</a>
+      <td class="text-start">
+        <a href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_DINNER }}">Add Food</a>
       </td>
-      <td>total calories</td>
-      <td>total carbs</td>
-      <td>total fat</td>
-      <td>total protein</td>
-      <td>total sodium</td>
-      <td>total sugar</td>
+      <td class="table-info">{{ totals.dinner.calories }}</td>
+      <td class="table-info">{{ totals.dinner.carbs_grams }}</td>
+      <td class="table-info">{{ totals.dinner.fat_grams }}</td>
+      <td class="table-info">{{ totals.dinner.protein_grams }}</td>
+      <td class="table-info">{{ totals.dinner.sodium_milligrams }}</td>
+      <td class="table-info">{{ totals.dinner.sugar_grams }}</td>
       <td></td>
     </tr>
     <tr>
-      <td colspan="8">Snacks</td>
+      <td colspan="8" class="h5 text-start">Snacks</td>
     </tr>
     {% for item in snacks %}
     <tr>
-      <td>{{ item.name }}</td>
+      <td class="text-start">{{ item.name }}</td>
       <td>{{ item.calories }}</td>
       <td>{{ item.carbs_grams }}</td>
       <td>{{ item.fat_grams }}</td>
       <td>{{ item.protein_grams }}</td>
       <td>{{ item.sodium_milligrams }}</td>
       <td>{{ item.sugar_grams }}</td>
-      <td><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
+      <td class="text-end"><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
-      <td>
-        <a class="btn btn-link" href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_SNACKS }}">Add Food</a>
+      <td class="text-start">
+        <a href="{% url 'food_diary_add_entry' date %}?meal={{ MEAL_SNACKS }}">Add Food</a>
       </td>
-      <td>total calories</td>
-      <td>total carbs</td>
-      <td>total fat</td>
-      <td>total protein</td>
-      <td>total sodium</td>
-      <td>total sugar</td>
+      <td class="table-info">{{ totals.snacks.calories }}</td>
+      <td class="table-info">{{ totals.snacks.carbs_grams }}</td>
+      <td class="table-info">{{ totals.snacks.fat_grams }}</td>
+      <td class="table-info">{{ totals.snacks.protein_grams }}</td>
+      <td class="table-info">{{ totals.snacks.sodium_milligrams }}</td>
+      <td class="table-info">{{ totals.snacks.sugar_grams }}</td>
+      <td></td>
+    </tr>
+    <tr class="fw-bold">
+      <td class="text-start">Totals</td>
+      <td>{{ totals.day.calories }}</td>
+      <td>{{ totals.day.carbs_grams }}</td>
+      <td>{{ totals.day.fat_grams }}</td>
+      <td>{{ totals.day.protein_grams }}</td>
+      <td>{{ totals.day.sodium_milligrams }}</td>
+      <td>{{ totals.day.sugar_grams }}</td>
       <td></td>
     </tr>
   </table>
