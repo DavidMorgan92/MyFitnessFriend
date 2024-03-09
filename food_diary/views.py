@@ -1,5 +1,4 @@
-from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.shortcuts import render, redirect, get_object_or_404
 from allauth.account.decorators import login_required
 import datetime
 from .models import FoodDiary, FoodDiaryEntry
@@ -42,12 +41,16 @@ def index(request):
 
 
 @login_required
-def delete_entry(request, entry_id):
-    return render(request, 'food_diary/index.html')
+def delete_entry(request, date, entry_id):
+    food_diary = get_object_or_404(FoodDiary, owner=request.user, date=date)
+    entry = get_object_or_404(FoodDiaryEntry, food_diary=food_diary, pk=entry_id)
+    entry.delete()
+
+    return redirect(reverse_with_params('food_diary_index', get={'date': date}))
 
 
 @login_required
-def add_entry(request, date: datetime.date):
+def add_entry(request, date):
     if request.method == 'POST':
         # Load diary for date given
         food_diary = FoodDiary.objects.get_or_create(
@@ -61,7 +64,7 @@ def add_entry(request, date: datetime.date):
             entry = FoodDiaryEntry(food_diary=food_diary, **form.cleaned_data)
             entry.save()
 
-            return redirect(reverse_with_params('food_diary_index', get={'date': date.strftime('%Y-%m-%d')}))
+            return redirect(reverse_with_params('food_diary_index', get={'date': date}))
     else:
         initial = {
             'meal': request.GET['meal'] if request.GET and 'meal' in request.GET else None

@@ -40,7 +40,7 @@
       <td>{{ item.protein_grams }}</td>
       <td>{{ item.sodium_milligrams }}</td>
       <td>{{ item.sugar_grams }}</td>
-      <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
+      <td><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
@@ -67,7 +67,7 @@
       <td>{{ item.protein_grams }}</td>
       <td>{{ item.sodium_milligrams }}</td>
       <td>{{ item.sugar_grams }}</td>
-      <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
+      <td><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
@@ -94,7 +94,7 @@
       <td>{{ item.protein_grams }}</td>
       <td>{{ item.sodium_milligrams }}</td>
       <td>{{ item.sugar_grams }}</td>
-      <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
+      <td><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
@@ -121,7 +121,7 @@
       <td>{{ item.protein_grams }}</td>
       <td>{{ item.sodium_milligrams }}</td>
       <td>{{ item.sugar_grams }}</td>
-      <td><a href="{% url 'food_diary_delete_entry' item.id %}">Delete</a></td>
+      <td><a href="{% url 'food_diary_delete_entry' date item.id %}">Delete</a></td>
     </tr>
     {% endfor %}
     <tr>
