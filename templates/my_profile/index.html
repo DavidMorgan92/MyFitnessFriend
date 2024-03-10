@@ -4,4 +4,18 @@
 
 <h1>My Profile</h1>
 
+<h2>Account Settings</h2>
+
+<div class="row">
+  <div class="col-12">
+    <a href="{% url 'account_change_password' %}" class="btn btn-link">Change password</a>
+  </div>
+  <div class="col-12">
+    <a href="{% url 'account_reset_password' %}" class="btn btn-link">Reset password</a>
+  </div>
+  <div class="col-12">
+    <a href="{% url 'account_email' %}" class="btn btn-link">Manage email accounts</a>
+  </div>
+</div>
+
 {% endblock %}
