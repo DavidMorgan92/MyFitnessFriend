@@ -34,7 +34,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'https://my-fitness-friend-552c745245e2.herokuapp.com',
+    'my-fitness-friend-552c745245e2.herokuapp.com',
 ]
 
 # TODO Configure backend for real emails in production
