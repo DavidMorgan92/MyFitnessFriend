@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from os import environ
+
+# Import env file to set up environment for local development
+try:
+    import env
+except:
+    pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +27,28 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f7lo2zriyjp)ew86##sqhb7m4f%5l6k-2d64p(cw253oruev)o'
+SECRET_KEY = environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'https://my-fitness-friend-552c745245e2.herokuapp.com',
+]
+
+# TODO Configure backend for real emails in production
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Configure security for production environment
+if environ['ENVIRONMENT'] == 'Production':
+    DEBUG = False
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 2592000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
 
 
 # Application definition
@@ -94,8 +117,18 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+    'primary': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': environ.get('DB_NAME', ''),
+        'USER': environ.get('DB_USER', ''),
+        'PASSWORD': environ.get('DB_PASSWORD', ''),
+        'HOST': environ.get('DB_HOST', ''),
+        'PORT': environ.get('DB_PORT', ''),
+    },
 }
+
+DATABASE_ROUTERS = ['my_fitness_friend.database_router.DatabaseRouter']
 
 
 # Password validation
@@ -145,6 +178,9 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# Authentication settings
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -162,8 +198,6 @@ SOCIALACCOUNT_PROVIDERS = {
         'OAUTH_PKCE_ENABLED': True,
     }
 }
-
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
