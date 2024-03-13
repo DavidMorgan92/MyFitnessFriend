@@ -3,3 +3,5 @@ __pycache__
 *.apps.googleusercontent.com.json
 env.py
 staticfiles
+.coverage
+htmlcov
