@@ -43,3 +43,10 @@ class IndexViewTests(TestCase):
         response = self.client.get(reverse('my_profile_index'))
         self.assertContains(response, f'<a href="{reverse(
             'account_email')}" class="btn btn-link">Manage email accounts</a>')
+
+    def test_profile_nav_link_is_active(self):
+        login_success = self.client.login(username='test', password='test')
+        self.assertTrue(login_success)
+        response = self.client.get(reverse('my_profile_index'))
+        self.assertContains(response, f'<a class="nav-link active" aria-current="page" href="{reverse(
+            'my_profile_index')}">My Profile</a>', html=True)
