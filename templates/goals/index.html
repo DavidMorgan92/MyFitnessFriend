@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>Goals</h1>
+
+<h2>Goal Wizard</h2>
+
+<h2>Set Daily Macro Goals</h2>
+
+<form action="{% url 'goals_index' %}" method="post">
+  {% csrf_token %}
+
+  {{ form }}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 {% endblock %}
