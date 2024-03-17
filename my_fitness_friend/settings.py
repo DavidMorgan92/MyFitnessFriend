@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'home',
     'my_profile',
     'food_diary',
+    'goals',
 ]
 
 MIDDLEWARE = (
