@@ -147,3 +147,55 @@ class AddEntryViewTests(TestCase):
         response = self.client.get(
             reverse('food_diary_add_entry', args=[datetime.date(2001, 1, 1)]))
         self.assertEqual(response.resolver_match.func, views.add_entry)
+
+    def test_context_contains_input_date(self):
+        login_success = self.client.login(username='test', password='test')
+        self.assertTrue(login_success)
+        response = self.client.get(
+            reverse('food_diary_add_entry', args=[datetime.date(2001, 1, 1)]), follow=True)
+        self.assertEqual(response.context['date'], datetime.date(2001, 1, 1))
+
+    def test_form_initial_meal_is_none(self):
+        login_success = self.client.login(username='test', password='test')
+        self.assertTrue(login_success)
+        response = self.client.get(
+            reverse('food_diary_add_entry', args=[datetime.date(2001, 1, 1)]), follow=True)
+        self.assertEqual(response.context['form'].initial, {'meal': None})
+
+    def test_form_initial_meal_is_breakfast_given_request_meal_is_breakfast(self):
+        login_success = self.client.login(username='test', password='test')
+        self.assertTrue(login_success)
+        response = self.client.get(
+            reverse('food_diary_add_entry', args=[datetime.date(2001, 1, 1)]), data={'meal': FoodDiaryEntry.Meal.BREAKFAST}, follow=True)
+        self.assertEqual(response.context['form'].initial, {
+                         'meal': str(FoodDiaryEntry.Meal.BREAKFAST)})
+
+    def test_form_initial_meal_is_lunch_given_request_meal_is_lunch(self):
+        login_success = self.client.login(username='test', password='test')
+        self.assertTrue(login_success)
+        response = self.client.get(
+            reverse('food_diary_add_entry', args=[datetime.date(2001, 1, 1)]), data={'meal': FoodDiaryEntry.Meal.LUNCH}, follow=True)
+        self.assertEqual(response.context['form'].initial, {
+                         'meal': str(FoodDiaryEntry.Meal.LUNCH)})
+
+    def test_form_initial_meal_is_dinner_given_request_meal_is_dinner(self):
+        login_success = self.client.login(username='test', password='test')
+        self.assertTrue(login_success)
+        response = self.client.get(
+            reverse('food_diary_add_entry', args=[datetime.date(2001, 1, 1)]), data={'meal': FoodDiaryEntry.Meal.DINNER}, follow=True)
+        self.assertEqual(response.context['form'].initial, {
+                         'meal': str(FoodDiaryEntry.Meal.DINNER)})
+
+    def test_form_initial_meal_is_snacks_given_request_meal_is_snacks(self):
+        login_success = self.client.login(username='test', password='test')
+        self.assertTrue(login_success)
+        response = self.client.get(
+            reverse('food_diary_add_entry', args=[datetime.date(2001, 1, 1)]), data={'meal': FoodDiaryEntry.Meal.SNACKS}, follow=True)
+        self.assertEqual(response.context['form'].initial, {
+                         'meal': str(FoodDiaryEntry.Meal.SNACKS)})
+
+    # TODO Test post creates food diary if it doesn't exist
+        
+    # TODO Test post gets existing food diary
+        
+    # TODO Test post adds entry to form with correct values
