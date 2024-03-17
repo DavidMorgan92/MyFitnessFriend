@@ -64,7 +64,7 @@ class IndexViewTests(TestCase):
             'food_diary_index')}">Food Diary</a>', html=True)
 
 
-class DeleteEntryTests(TestCase):
+class DeleteEntryViewTests(TestCase):
     def setUp(self):
         self.client = Client()
         self.user = User.objects.create_user(username='test', password='test')
@@ -126,3 +126,24 @@ class DeleteEntryTests(TestCase):
             'food_diary_index', get={'date': datetime.date(2001, 1, 1)}))
         entry = list(FoodDiaryEntry.objects.filter(id=1))
         self.assertEqual(len(entry), 0)
+
+
+class AddEntryViewTests(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(username='test', password='test')
+
+    def tearDown(self):
+        self.user.delete()
+        return super().tearDown()
+
+    def test_view_redirects_to_login(self):
+        response = self.client.get(reverse('food_diary_add_entry', args=[
+                                   datetime.date(2001, 1, 1)]), follow=True)
+        self.assertRedirects(response, reverse_with_params(
+            'account_login', get={'next': '/food_diary/add/2001-01-01'}))
+
+    def test_view_is_rendered_by_correct_view_func(self):
+        response = self.client.get(
+            reverse('food_diary_add_entry', args=[datetime.date(2001, 1, 1)]))
+        self.assertEqual(response.resolver_match.func, views.add_entry)
