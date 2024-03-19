@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'my_profile',
     'food_diary',
     'goals',
+    'store',
 ]
 
 MIDDLEWARE = (

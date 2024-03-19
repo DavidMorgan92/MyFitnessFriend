@@ -27,6 +27,7 @@
           {% include 'nav_item.html' with route_name='home_index' link_text='Home' %}
           {% include 'nav_item.html' with route_name='food_diary_index' link_text='Food Diary' %}
           {% include 'nav_item.html' with route_name='goals_index' link_text='Goals' %}
+          {% include 'nav_item.html' with route_name='store_index' link_text='Store' %}
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
           {% if request.user.is_authenticated %}
