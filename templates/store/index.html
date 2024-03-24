@@ -4,7 +4,7 @@
 
 <h1>Store</h1>
 
-<form action="{% url 'store_index' %}" method="get" class="row row-cols-lg-auto g-3 align-items-center">
+<form action="{% url 'store_index' %}" method="get" class="row row-cols-lg-auto g-3 align-items-center my-3">
   <div class="col-12">
     <input type="search" name="q" id="q" value="{{ search_term }}" placeholder="Search" class="form-control">
   </div>
@@ -15,7 +15,19 @@
 </form>
 
 {% for product in products %}
-<p>{{ product.name }}</p>
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <a href="#" class="h5 card-title">{{ product.name }}</a>
+        <p class="card-text">£{{ product.price_pounds }}</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endfor %}
 
 {% endblock %}
