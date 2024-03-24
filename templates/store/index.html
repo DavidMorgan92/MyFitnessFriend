@@ -4,12 +4,12 @@
 
 <h1>Store</h1>
 
-<form action="{% url 'store_index' %}" method="get">
-  <div class="row">
-    <div class="col">
-      <input type="search" name="q" id="q" placeholder="Search" class="form-control">
-    </div>
-  
+<form action="{% url 'store_index' %}" method="get" class="row row-cols-lg-auto g-3 align-items-center">
+  <div class="col-12">
+    <input type="search" name="q" id="q" value="{{ search_term }}" placeholder="Search" class="form-control">
+  </div>
+
+  <div class="col-12">
     <input type="submit" value="Search" class="btn btn-primary">
   </div>
 </form>
