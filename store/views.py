@@ -48,6 +48,14 @@ def details(request, id):
 def add_to_basket(request, id):
     product = get_object_or_404(Product, id=id)
 
+    basket = request.session.get('basket', {})
+    basket[id] = 1
+    request.session['basket'] = basket
+
     messages.add_message(request, messages.INFO, f'Added {product.name} to basket')
 
     return redirect(reverse('store_details', kwargs={'id': id}))
+
+
+def basket(request):
+    return render(request, 'store/basket.html')
