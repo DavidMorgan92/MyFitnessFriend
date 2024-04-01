@@ -6,8 +6,20 @@
 
 <form action="{% url 'store_add_to_basket' product.id %}" method="post">
   {% csrf_token %}
+  
+  {% for type, variants_of_type in variants.items %}
+  <label for="variant-{{ type }}" class="form-label">{{ type }}</label>
+  <select name="variant-{{ type }}" id="variant-{{ type }}" class="form-select">
+    {% for variant_of_type in variants_of_type %}
+    <option value="{{ variant_of_type.id }}">{{ variant_of_type.name }}</option>
+    {% endfor %}    
+  </select>
+  {% endfor %}
 
-  <button class="btn btn-primary">Submit</button>
+  <label for="count" class="form-label">Count</label>
+  <input type="number" name="count" id="count" min="1" max="99">
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 {% endblock %}

@@ -10,6 +10,7 @@
         "nostatic",
         "optgroups",
         "PKCE",
+        "productvariant",
         "socialaccount",
         "whitenoise",
         "wsgi"
