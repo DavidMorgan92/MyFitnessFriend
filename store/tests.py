@@ -19,21 +19,43 @@ class AddToBasketTests(TestCase):
         response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]))
         self.assertEqual(response.status_code, 400)
 
+    def test_returns_400_if_no_count_value_given(self):
+        response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]), {
+            'variant-Colour': self.black_colour_variant.id,
+        })
+        self.assertEqual(response.status_code, 400)
+
+    def test_returns_400_if_count_is_less_than_1(self):
+        response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]), {
+            'variant-Colour': self.black_colour_variant.id,
+            'count': 0,
+        })
+        self.assertEqual(response.status_code, 400)
+    
+    def test_returns_400_if_count_is_greater_than_99(self):
+        response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]), {
+            'variant-Colour': self.black_colour_variant.id,
+            'count': 100,
+        })
+        self.assertEqual(response.status_code, 400)
+
     def test_returns_400_if_variant_value_does_not_exist(self):
         response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]), {
             'variant-Colour': 1001,
+            'count': 1,
         })
         self.assertEqual(response.status_code, 400)
 
     def test_adds_new_item_to_basket(self):
         response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]), {
             'variant-Colour': self.black_colour_variant.id,
+            'count': 2,
         })
         self.assertRedirects(response, reverse('store_details', args=[self.test_product.id]))
         self.assertEqual(len(self.client.session['basket']), 1)
         self.assertDictEqual(self.client.session['basket'][0], {
             'product_id': self.test_product.id,
-            'count': 1,
+            'count': 2,
             'variants': {
                 'Colour': self.black_colour_variant.id,
             },
@@ -42,6 +64,7 @@ class AddToBasketTests(TestCase):
     def test_adds_message_when_product_added(self):
         response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]), {
             'variant-Colour': self.black_colour_variant.id,
+            'count': 1,
         })
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
@@ -65,12 +88,13 @@ class AddToBasketTests(TestCase):
         session.save()
         response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]), {
             'variant-Colour': self.black_colour_variant.id,
+            'count': 2,
         })
         self.assertRedirects(response, reverse('store_details', args=[self.test_product.id]))
         self.assertEqual(len(self.client.session['basket']), 1)
         self.assertDictEqual(self.client.session['basket'][0], {
             'product_id': self.test_product.id,
-            'count': 2,
+            'count': 3,
             'variants': {
                 'Colour': self.black_colour_variant.id,
             },
@@ -90,6 +114,7 @@ class AddToBasketTests(TestCase):
         session.save()
         response = self.client.post(reverse('store_add_to_basket', args=[self.test_product.id]), {
             'variant-Colour': self.grey_colour_variant.id,
+            'count': 1,
         })
         self.assertRedirects(response, reverse('store_details', args=[self.test_product.id]))
         self.assertEqual(len(self.client.session['basket']), 2)

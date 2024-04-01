@@ -64,6 +64,14 @@ def add_to_basket(request, id):
     #
     # Validate post parameters
 
+    if 'count' not in request.POST:
+        raise BadRequest('No value given for count parameter')
+    
+    count = int(request.POST['count'])
+
+    if count < 1 or count > 99:
+        raise BadRequest(f'Invalid value given for count parameter: {count}')
+
     # For each variant type
     for type in variant_types:
         # If there is no corresponding parameter given, raise a validation error
@@ -82,7 +90,7 @@ def add_to_basket(request, id):
     # Construct the chosen item
     new_item = {
         'product_id': id,
-        'count': 1,
+        'count': count,
         'variants': {k[8:]: int(v) for k, v in request.POST.items() if k.startswith('variant-')}
     }
 
@@ -120,7 +128,7 @@ def add_to_basket(request, id):
 
     if existing_item_index > -1:
         # If there is already a matching item in the basket, raise its count
-        basket[existing_item_index]['count'] += 1
+        basket[existing_item_index]['count'] += count
     else:
         # If there isn't already a matching item in the basket, add it to the basket
         basket.append(new_item)
