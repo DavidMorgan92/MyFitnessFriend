@@ -16,5 +16,5 @@ class SearchForm(forms.Form):
 
     search_term = forms.CharField(required=True, max_length=255)
     sort_order = forms.ChoiceField(required=True, choices=SORT_CHOICES)
-    page = forms.IntegerField(required=True, initial=1, min_value=1, max_value=9999, widget=forms.HiddenInput)
+    page = forms.IntegerField(required=False, initial=1, min_value=1, max_value=9999, widget=forms.HiddenInput)
     items_per_page = forms.TypedChoiceField(required=True, coerce=int, choices=PAGE_CHOICES)
