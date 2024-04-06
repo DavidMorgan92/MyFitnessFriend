@@ -8,14 +8,17 @@
   {{ search_form.page }}
 
   <div class="col-12">
+    <label class="visually-hidden" for="{{ search_form.search_term.id_for_label }}">{{ search_form.search_term.label }}</label>
     {{ search_form.search_term }}
   </div>
 
   <div class="col-12">
+    <label class="visually-hidden" for="{{ search_form.sort_order.id_for_label }}">{{ search_form.sort_order.label }}</label>
     {{ search_form.sort_order }}
   </div>
 
   <div class="col-12">
+    <label class="visually-hidden" for="{{ search_form.items_per_page.id_for_label }}">{{ search_form.items_per_page.label }}</label>
     {{ search_form.items_per_page }}
   </div>
 
