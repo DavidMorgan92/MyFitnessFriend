@@ -4,4 +4,20 @@
 
 <h1>Store</h1>
 
+<form action="{% url 'store_search' %}" method="get">
+  <input type="hidden" name="page" value="1">
+  <input type="hidden" name="items_per_page" value="10">
+  <input type="hidden" name="sort_order" value="price_pounds">
+
+  <div class="input-group">
+    <div class="form-floating">
+      <input type="search" class="form-control" id="search" name="search_term" placeholder="Search all products" required>
+      <label for="search">Search all products</label>
+    </div>
+    <button class="btn btn-primary" type="submit">
+      <i class="bi bi-search"></i>
+    </button>
+  </div>
+</form>
+
 {% endblock %}
