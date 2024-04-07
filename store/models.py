@@ -13,6 +13,7 @@ class Product(models.Model):
     price_pounds = models.DecimalField(max_digits=8, decimal_places=2, validators=[
                                        MinValueValidator(0), MaxValueValidator(999999.99)])
     category = models.IntegerField(choices=Category, default=Category.OTHER)
+    image = models.ImageField(null=True)
 
 
 class ProductVariant(models.Model):
@@ -21,6 +22,7 @@ class ProductVariant(models.Model):
     type = models.CharField(max_length=255)
     price_pounds = models.DecimalField(max_digits=8, decimal_places=2, validators=[
                                        MinValueValidator(0), MaxValueValidator(999999.99)])
+    image = models.ImageField(null=True)
 
 
 class Order(models.Model):
@@ -40,6 +42,7 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    product_variant = models.ForeignKey(ProductVariant, on_delete=models.SET_NULL, null=True)
     count = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(1000)])
     price = models.DecimalField(max_digits=8, decimal_places=2, validators=[

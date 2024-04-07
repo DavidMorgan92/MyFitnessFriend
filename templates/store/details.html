@@ -1,29 +1,51 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <h1>{{ product.name }}</h1>
 
-<form action="{% url 'store_add_to_basket' product.id %}" method="post">
-  {% csrf_token %}
-  
-  {% for type, variants_of_type in variants.items %}
-  <div class="mb-3">
-    <label for="variant-{{ type }}" class="form-label">{{ type }}</label>
-    <select name="variant-{{ type }}" id="variant-{{ type }}" class="form-select">
-      {% for variant_of_type in variants_of_type %}
-      <option value="{{ variant_of_type.id }}">{{ variant_of_type.name }}</option>
-      {% endfor %}    
-    </select>
+<div class="row">
+  <div class="col-12 col-md-6 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }} product image" class="img-fluid">
+        {% else %}
+        <img src="{% static 'images/image-missing.svg' %}" alt="Image missing" class="img-fluid">
+        {% endif %}
+      </div>
+    </div>
   </div>
-  {% endfor %}
 
-  <div class="mb-3">
-    <label for="count" class="form-label">Count</label>
-    <input type="number" name="count" id="count" min="1" max="99" value="1" class="form-control">
+  <div class="col-12 col-md-6 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <form action="{% url 'store_add_to_basket' product.id %}" method="post">
+          {% csrf_token %}
+          
+          {% for type, variants_of_type in variants.items %}
+          <div class="mb-3">
+            <label for="variant-{{ type }}" class="form-label">{{ type }}</label>
+            <select name="variant-{{ type }}" id="variant-{{ type }}" class="form-select">
+              {% for variant_of_type in variants_of_type %}
+              <option value="{{ variant_of_type.id }}">{{ variant_of_type.name }}</option>
+              {% endfor %}    
+            </select>
+          </div>
+          {% endfor %}
+        
+          <div class="mb-3">
+            <label for="count" class="form-label">Count</label>
+            <input type="number" name="count" id="count" min="1" max="99" value="1" class="form-control">
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Add to basket</button>
+        </form>
+      </div>
+    </div>
   </div>
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>
 
 {% endblock %}
