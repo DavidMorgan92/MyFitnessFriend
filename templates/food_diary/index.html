@@ -6,7 +6,7 @@
 
 <form id="date-form" method="get" action="{% url 'food_diary_index' %}" class="row row-cols-sm-auto g-3 my-3">
   <label for="date" class="col-form-label d-none d-sm-block">Date</label>
-  
+
   <div class="col-12">
     <input type="date" id="date" name="date" class="form-control" value="{{ date|date:'Y-m-d' }}">
   </div>
@@ -84,7 +84,7 @@
     </tr>
     <tr>
       <td colspan="8" class="h5 text-start">Dinner</td>
-    </tr>  
+    </tr>
     {% for item in dinner %}
     <tr>
       <td class="text-start">{{ item.name }}</td>

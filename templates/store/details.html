@@ -24,28 +24,65 @@
       <div class="card-body">
         <form action="{% url 'store_add_to_basket' product.id %}" method="post">
           {% csrf_token %}
-          
+
           {% for type, variants_of_type in variants.items %}
           <div class="mb-3">
             <label for="variant-{{ type }}" class="form-label">{{ type }}</label>
             <select name="variant-{{ type }}" id="variant-{{ type }}" class="form-select">
               {% for variant_of_type in variants_of_type %}
-              <option value="{{ variant_of_type.id }}">{{ variant_of_type.name }}</option>
-              {% endfor %}    
+              <option value="{{ variant_of_type.id }}"
+                data-price-delta-pounds="{{ variant_of_type.price_delta_pounds }}">
+                {{ variant_of_type.name }}
+                {% if variant_of_type.price_delta_pounds > 0 %}
+                (+£{{ variant_of_type.price_delta_pounds }})
+                {% elif variant_of_type.price_delta_pounds < 0 %}
+                (-£{{ variant_of_type.price_delta_pounds }})
+                {% endif %}
+              </option>
+              {% endfor %}
             </select>
           </div>
           {% endfor %}
-        
+
           <div class="mb-3">
             <label for="count" class="form-label">Count</label>
             <input type="number" name="count" id="count" min="1" max="99" value="1" class="form-control">
           </div>
-          
+
           <button type="submit" class="btn btn-primary">Add to basket</button>
         </form>
+
+        <div id="item-total" class="h3 mt-4" data-product-price="{{ product.price_pounds }}"></div>
       </div>
     </div>
   </div>
 </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+  $(function () {
+    setTotal();
+    $("select[id^=variant-], #count").on("change", setTotal);
+  });
+
+  function setTotal() {
+    // Set item to total to price of base product
+    let total = Number($("#item-total").data("product-price"));
+  
+    // Add price delta for each variant's selected option
+    for (const variant of $("select[id^=variant-]")) {
+      total += Number($(variant).children("option:selected").data("price-delta-pounds"));
+    }
+  
+    // Multiply by the number of items chosen
+    total *= Number($("#count").val());
+  
+    // Display the total to the user
+    $("#item-total").text(`£${total.toFixed(2)}`);
+  }
+</script>
 
 {% endblock %}

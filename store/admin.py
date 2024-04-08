@@ -17,10 +17,10 @@ class ProductVariantAdmin(admin.ModelAdmin):
         'product',
         'name',
         'type',
-        'price_pounds',
+        'price_delta_pounds',
     )
 
-    ordering = ('product', 'type', 'price_pounds', 'name')
+    ordering = ('product', 'type', 'price_delta_pounds', 'name')
 
 
 class OrderAdmin(admin.ModelAdmin):

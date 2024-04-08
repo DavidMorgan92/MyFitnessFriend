@@ -20,9 +20,8 @@ class ProductVariant(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=255)
-    price_pounds = models.DecimalField(max_digits=8, decimal_places=2, validators=[
-                                       MinValueValidator(0), MaxValueValidator(999999.99)])
-    image = models.ImageField(null=True)
+    price_delta_pounds = models.DecimalField(max_digits=8, decimal_places=2, validators=[
+        MinValueValidator(-999999.99), MaxValueValidator(999999.99)])
 
 
 class Order(models.Model):
@@ -42,7 +41,8 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
-    product_variant = models.ForeignKey(ProductVariant, on_delete=models.SET_NULL, null=True)
+    product_variant = models.ForeignKey(
+        ProductVariant, on_delete=models.SET_NULL, null=True)
     count = models.IntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(1000)])
     price = models.DecimalField(max_digits=8, decimal_places=2, validators=[
