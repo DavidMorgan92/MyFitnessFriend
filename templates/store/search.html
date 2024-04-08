@@ -38,14 +38,14 @@
 {% for product in page %}
 <div class="card mb-3">
   <div class="row g-0">
-    <div class="col-md-4">
+    <div class="col-sm-6 col-md-4 col-lg-2">
       {% if product.image %}
       <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name }} product image">
       {% else %}
       <img src="{% static 'images/image-missing.svg' %}" class="img-fluid rounded-start" alt="Missing image">
       {% endif %}
     </div>
-    <div class="col-md-8">
+    <div class="col-sm-6 col-md-8 col-lg-10">
       <div class="card-body">
         <a href="{% url 'store_details' product.id %}" class="h5 card-title">{{ product.name }}</a>
         <p class="card-text">£{{ product.price_pounds }}</p>
