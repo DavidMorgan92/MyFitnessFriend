@@ -1,5 +1,37 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
+
 <h1>Basket</h1>
+
+{% for basket_item in basket %}
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-ms-6 col-md-4 col-lg-2">
+      {% if basket_item.product.image %}
+      <img src="{{ basket_item.product.image.url }}" class="img-fluid rounded-start" alt="{{ basket_item.product.name }} product image">
+      {% else %}
+      <img src="{% static 'images/image-missing.svg' %}" class="img-fluid rounded-start" alt="Missing image">
+      {% endif %}
+    </div>
+    <div class="col-sm-6 col-md-8 col-lg-10">
+      <div class="card-body">
+        <a href="{% url 'store_details' basket_item.product_id %}" class="h5 card-title">{{ basket_item.product.name }}</a>
+        {% for variant_type, variant in basket_item.variants.items %}
+        <div class="card-text text-muted">{{ variant_type }}: {{ variant.name }}</div>
+        {% endfor %}
+        <div class="card-text">x{{ basket_item.count }}</div>
+        <div class="card-text">£{{ basket_item.price_pounds }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<p class="h2">Basket total: £{{ total_price_pounds }}</p>
+
+<a href="#" class="btn btn-primary">Go to checkout</a>
+
 {% endblock %}

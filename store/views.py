@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.exceptions import BadRequest
-from .models import Product
+from .models import Product, ProductVariant
 from .forms import SearchForm
 
 
@@ -142,4 +142,36 @@ def add_to_basket(request, id):
 
 
 def basket(request):
-    return render(request, 'store/basket.html')
+    def product_details(basket_item):
+        product = Product.objects.filter(pk=basket_item['product_id']).first()
+        price_pounds = product.price_pounds
+
+        details = {
+            'product': product,
+            'variants': {},
+        }
+
+        for variant_type, variant_value in basket_item['variants'].items():
+            variant = ProductVariant.objects.filter(type=variant_type, pk=variant_value, product_id=basket_item['product_id']).first()
+            price_pounds += variant.price_delta_pounds
+            details['variants'][variant_type] = variant
+
+        price_pounds *= basket_item['count']
+        details['price_pounds'] = price_pounds
+        
+        return details
+
+    basket = request.session.get('basket', [])
+
+    context = {
+        'basket': [
+            {
+                **item,
+                **product_details(item),
+            } for item in basket
+        ],
+    }
+
+    context['total_price_pounds'] = sum([item['price_pounds'] for item in context['basket']])
+
+    return render(request, 'store/basket.html', context)
