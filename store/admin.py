@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, ProductVariant, Order, OrderItem
+from .models import Product, ProductVariant, Order, OrderItem, OrderItemVariant
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -25,12 +25,13 @@ class ProductVariantAdmin(admin.ModelAdmin):
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
+        'date',
         'owner',
         'state',
-        'price',
+        'grand_total',
     )
 
-    ordering = ('owner', 'state', 'price')
+    ordering = ('-date', 'owner', 'state', 'grand_total')
 
 
 class OrderItemAdmin(admin.ModelAdmin):
@@ -48,3 +49,4 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductVariant, ProductVariantAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
+admin.site.register(OrderItemVariant)

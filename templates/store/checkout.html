@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Checkout</h1>
+
+<form action="{% url 'store_checkout' %}" method="post">
+  {% csrf_token %}
+
+  {{ form }}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

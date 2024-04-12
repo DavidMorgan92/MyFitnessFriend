@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.exceptions import BadRequest
 from .models import Product, ProductVariant
-from .forms import SearchForm
+from .forms import SearchForm, CheckoutForm
 
 
 def index(request):
@@ -175,3 +175,19 @@ def basket(request):
     context['total_price_pounds'] = sum([item['price_pounds'] for item in context['basket']])
 
     return render(request, 'store/basket.html', context)
+
+
+def checkout(request):
+    form = CheckoutForm()
+
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+
+        if form.is_valid():
+            pass
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'store/checkout.html', context)

@@ -32,6 +32,6 @@
 
 <p class="h2">Basket total: £{{ total_price_pounds }}</p>
 
-<a href="#" class="btn btn-primary">Go to checkout</a>
+<a href="{% url 'store_checkout' %}" class="btn btn-primary">Go to checkout</a>
 
 {% endblock %}
