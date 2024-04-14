@@ -4,6 +4,8 @@ from django.urls import reverse
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.core.exceptions import BadRequest
+from django.conf import settings
+import stripe
 from .models import Product, ProductVariant, Order, OrderItem, OrderItemVariant
 from .forms import SearchForm, CheckoutForm
 
@@ -179,7 +181,7 @@ def get_basket_with_product_details(request):
 
     context['total_price_pounds'] = sum(
         [item['price_pounds'] for item in context['basket']])
-    
+
     return context
 
 
@@ -192,6 +194,9 @@ def basket(request):
 
 
 def checkout(request):
+    if len(request.session.get('basket', [])) == 0:
+        raise BadRequest('There are no items in the basket')
+
     form = CheckoutForm()
 
     if request.method == 'POST':
@@ -233,8 +238,8 @@ def checkout(request):
                         order_item=order_item,
                         product_variant=variant,
                     )
-            
-            return redirect(reverse('store_payment'))
+
+            return redirect(reverse('store_payment', kwargs={'order_id': order.id}))
 
     context = {
         'form': form,
@@ -243,5 +248,39 @@ def checkout(request):
     return render(request, 'store/checkout.html', context)
 
 
-def payment(request):
-    return render(request, 'store/payment.html')
+def payment(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+
+    intent = stripe.PaymentIntent.create(
+        amount=int(order.grand_total * 100),
+        currency='gbp',
+    )
+
+    context = {
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'stripe_client_secret': intent['client_secret'],
+        'return_url': request.build_absolute_uri(reverse('store_payment_complete', kwargs={'order_id': order_id})),
+    }
+
+    return render(request, 'store/payment.html', context)
+
+
+def payment_complete(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+
+    client_secret = request.GET['payment_intent']
+    intent = stripe.PaymentIntent.retrieve(client_secret)
+
+    context = {
+        'success': False,
+    }
+
+    if intent['status'] == 'succeeded':
+        order.state = Order.State.PAID
+        order.save()
+
+        request.session['basket'] = []
+
+        context['success'] = True
+
+    return render(request, 'store/payment_complete.html', context)

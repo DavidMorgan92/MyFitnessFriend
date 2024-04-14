@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if success %}
+<h1>Payment successful</h1>
+{% else %}
+<h1>Payment unsuccessful</h1>
+{% endif %}
+
+<div class="mt-3">
+  <a href="{% url 'store_index' %}" class="btn btn-primary">Continue shopping</a>
+  <a href="#" class="btn btn-primary">See your orders</a>
+</div>
+
+{% endblock %}

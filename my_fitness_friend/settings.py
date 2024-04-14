@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from os import environ
+import stripe
 
 # Import env file to set up environment for local development
 try:
@@ -228,3 +229,9 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_REDIRECT_URL = '/'
+
+
+# Stripe payment settings
+
+STRIPE_PUBLIC_KEY = environ['STRIPE_PUBLIC_KEY']
+stripe.api_key = environ['STRIPE_SECRET_KEY']
