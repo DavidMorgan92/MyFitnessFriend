@@ -194,9 +194,6 @@ def basket(request):
 
 
 def checkout(request):
-    if len(request.session.get('basket', [])) == 0:
-        raise BadRequest('There are no items in the basket')
-
     form = CheckoutForm()
 
     if request.method == 'POST':
@@ -243,6 +240,7 @@ def checkout(request):
 
     context = {
         'form': form,
+        'basket_length': len(request.session.get('basket', [])),
     }
 
     return render(request, 'store/checkout.html', context)

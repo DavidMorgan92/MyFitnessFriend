@@ -2,8 +2,12 @@
 
 {% block content %}
 
-<h1>Checkout</h1>
+<h1 class="mb-3">Checkout</h1>
 
+{% if basket_length == 0 %}
+<p>There are no items in your basket. Go the store to find some bargains.</p>
+<a href="{% url 'store_index' %}" class="btn btn-link">Go to the store</a>
+{% else %}
 <form action="{% url 'store_checkout' %}" method="post">
   {% csrf_token %}
 
@@ -11,5 +15,6 @@
 
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+{% endif %}
 
 {% endblock %}
