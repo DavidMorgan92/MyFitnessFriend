@@ -1,5 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>Welcome to My Fitness Friend</h1>
+
+<div class="mt-3 row">
+  <div class="col-12 col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title h5">Track your caloric intake</div>
+        <a href="{% url 'food_diary_index' %}" class="card-link">Go to your food diary</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title h5">Set your goals</div>
+        <a href="{% url 'goals_index' %}" class="card-link">Go to your goals</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title h5">Get equipment and clothing in our store</div>
+        <a href="{% url 'store_index' %}" class="card-link">Go to the store</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
