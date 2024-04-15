@@ -33,6 +33,7 @@ class Order(models.Model):
         RECEIVED = 4
 
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     state = models.IntegerField(choices=State, default=State.PLACED)
     full_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=254)

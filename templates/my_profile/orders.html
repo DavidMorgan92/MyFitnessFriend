@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>My orders</h1>
+
+{% for order in orders %}
+<div class="card my-3">
+  <div class="card-body">
+    <p class="card-text">{{ order.created_at|date:"d M Y H:m:s" }}</p>
+    <p class="card-text">£{{ order.grand_total }}</p>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock %}
