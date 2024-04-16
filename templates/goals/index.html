@@ -4,9 +4,19 @@
 
 <h1>Goals</h1>
 
-<h2>Goal Wizard</h2>
+<h2 class="mt-3">Goal Wizard</h2>
 
-<h2>Set Daily Macro Goals</h2>
+<p>Enter some details about yourself and choose your goal to automatically set your macro goals</p>
+
+<form action="{% url 'goals_wizard' %}" method="post">
+  {% csrf_token %}
+
+  {{ goal_wizard_form }}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<h2 class="mt-3">Set Daily Macro Goals</h2>
 
 <form action="{% url 'goals_index' %}" method="post">
   {% csrf_token %}
