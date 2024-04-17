@@ -218,7 +218,7 @@ def checkout(request):
             order_total = basket['total_price_pounds']
 
             order = Order.objects.create(
-                owner=request.user,
+                owner=request.user if request.user.is_authenticated else None,
                 state=Order.State.PLACED,
                 full_name=form.cleaned_data['full_name'],
                 email=form.cleaned_data['email'],
