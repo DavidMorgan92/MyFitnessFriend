@@ -66,3 +66,8 @@ class OrderItemVariant(models.Model):
     order_item = models.ForeignKey(OrderItem, on_delete=models.CASCADE)
     product_variant = models.ForeignKey(
         ProductVariant, on_delete=models.SET_NULL, null=True)
+
+
+class FeaturedProduct(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    order = models.IntegerField()

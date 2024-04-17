@@ -6,12 +6,24 @@ from django.core.paginator import Paginator
 from django.core.exceptions import BadRequest
 from django.conf import settings
 import stripe
-from .models import Product, ProductVariant, Order, OrderItem, OrderItemVariant
+from .models import Product, ProductVariant, Order, OrderItem, OrderItemVariant, FeaturedProduct
 from .forms import SearchForm, CheckoutForm
 
 
 def index(request):
-    return render(request, 'store/index.html')
+    featured_products = FeaturedProduct.objects.all()
+
+    featured_equipment_products = featured_products.filter(
+        product__category=Product.Category.EQUIPMENT).order_by('order')
+    featured_clothing_products = featured_products.filter(
+        product__category=Product.Category.CLOTHING).order_by('order')
+
+    context = {
+        'featured_equipment_products': map(lambda p: p.product, list(featured_equipment_products)),
+        'featured_clothing_products': map(lambda p: p.product, list(featured_clothing_products)),
+    }
+
+    return render(request, 'store/index.html', context)
 
 
 def search(request):

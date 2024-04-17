@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, ProductVariant, Order, OrderItem, OrderItemVariant
+from .models import Product, ProductVariant, Order, OrderItem, OrderItemVariant, FeaturedProduct
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -45,8 +45,18 @@ class OrderItemAdmin(admin.ModelAdmin):
     ordering = ('order', 'price')
 
 
+class FeaturedProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'product',
+        'order',
+    )
+
+    ordering = ('order',)
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductVariant, ProductVariantAdmin)
 admin.site.register(Order, OrderAdmin)
 admin.site.register(OrderItem, OrderItemAdmin)
 admin.site.register(OrderItemVariant)
+admin.site.register(FeaturedProduct, FeaturedProductAdmin)

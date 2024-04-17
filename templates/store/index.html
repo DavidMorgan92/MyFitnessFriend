@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <h1>Store</h1>
@@ -15,9 +17,54 @@
       <label for="search">Search all products</label>
     </div>
     <button class="btn btn-primary" type="submit">
+      <span class="visually-hidden">Search</span>
       <i class="bi bi-search"></i>
     </button>
   </div>
 </form>
+
+<h2 class="my-3">Featured Equipment</h2>
+
+{% for product in featured_equipment_products %}
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+      {% if product.image %}
+      <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name }} product image">
+      {% else %}
+      <img src="{% static 'images/image-missing.svg' %}" class="img-fluid rounded-start" alt="Missing image">
+      {% endif %}
+    </div>
+    <div class="col-sm-6 col-md-8 col-lg-10">
+      <div class="card-body">
+        <a href="{% url 'store_details' product.id %}" class="h5 card-title">{{ product.name }}</a>
+        <p class="card-text">£{{ product.price_pounds }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+<h2 class="my-3">Featured Clothing</h2>
+
+{% for product in featured_clothing_products %}
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-sm-6 col-md-4 col-lg-2">
+      {% if product.image %}
+      <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="{{ product.name }} product image">
+      {% else %}
+      <img src="{% static 'images/image-missing.svg' %}" class="img-fluid rounded-start" alt="Missing image">
+      {% endif %}
+    </div>
+    <div class="col-sm-6 col-md-8 col-lg-10">
+      <div class="card-body">
+        <a href="{% url 'store_details' product.id %}" class="h5 card-title">{{ product.name }}</a>
+        <p class="card-text">£{{ product.price_pounds }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
 
 {% endblock %}
