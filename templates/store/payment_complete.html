@@ -10,7 +10,9 @@
 
 <div class="mt-3">
   <a href="{% url 'store_index' %}" class="btn btn-primary">Continue shopping</a>
+  {% if user.is_authenticated %}
   <a href="{% url 'my_profile_orders' %}" class="btn btn-primary">See your orders</a>
+  {% endif %}
 </div>
 
 {% endblock %}
