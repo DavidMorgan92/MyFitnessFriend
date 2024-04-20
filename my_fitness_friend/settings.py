@@ -38,9 +38,6 @@ ALLOWED_HOSTS = [
     'my-fitness-friend-552c745245e2.herokuapp.com',
 ]
 
-# TODO Configure backend for real emails in production
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Configure security for production environment
 if environ['ENVIRONMENT'] == 'Production':
     DEBUG = False
@@ -235,3 +232,14 @@ LOGIN_REDIRECT_URL = '/'
 
 STRIPE_PUBLIC_KEY = environ['STRIPE_PUBLIC_KEY']
 stripe.api_key = environ['STRIPE_SECRET_KEY']
+
+if environ.get('ENVIRONMENT', '') == 'Production':
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = environ.get('EMAIL_HOST', '')
+    EMAIL_HOST_USER = environ.get('EMAIL_USER', '')
+    EMAIL_HOST_PASSWORD = environ.get('EMAIL_PASSWORD', '')
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    
