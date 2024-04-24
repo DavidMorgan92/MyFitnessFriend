@@ -16,6 +16,7 @@ Access the live deployment here: <https://my-fitness-friend-552c745245e2.herokua
   - [Django](#django)
   - [AWS S3](#aws-s3)
   - [Elephant SQL](#elephant-sql)
+  - [Stripe](#stripe)
 - [Testing](#testing)
 - [Defects](#defects)
 
@@ -265,6 +266,10 @@ The website is deployed on Heroku here: <https://my-fitness-friend-552c745245e2.
 ### Elephant SQL
 
 [ElephantSQL](https://www.elephantsql.com/) offers "fully managed and optimized PostgreSQL databases on various cloud platforms and regions." It will be used to host the database that will back the website.
+
+### Stripe
+
+[Stripe](https://stripe.com/) allows the website to "accept payments online, in person, and around the world with a payments solution built for any business – from scaling startups to global enterprises." It will be used to process payments from customers.
 
 ## Testing
 
