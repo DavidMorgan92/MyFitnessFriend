@@ -8,8 +8,8 @@ class AddToBasketTests(TestCase):
     def setUp(self):
         self.client = Client()
         self.test_product = Product.objects.create(name='Test Product', price_pounds=10, category=Product.Category.OTHER)
-        self.black_colour_variant = ProductVariant.objects.create(product=self.test_product, name='Black', type='Colour', price_pounds=10)
-        self.grey_colour_variant = ProductVariant.objects.create(product=self.test_product, name='Grey', type='Colour', price_pounds=10)
+        self.black_colour_variant = ProductVariant.objects.create(product=self.test_product, name='Black', type='Colour', price_delta_pounds=1)
+        self.grey_colour_variant = ProductVariant.objects.create(product=self.test_product, name='Grey', type='Colour', price_delta_pounds=-1)
 
     def test_returns_404_if_product_not_found(self):
         response = self.client.post(reverse('store_add_to_basket', args=[1001]))
