@@ -35,7 +35,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
-    'my-fitness-friend-552c745245e2.herokuapp.com',
+    'my-fitness-friend-2-48df58802784.herokuapp.com',
 ]
 
 # Configure security for production environment
