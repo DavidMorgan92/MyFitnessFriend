@@ -16,4 +16,4 @@ class MacroGoalAdmin(admin.ModelAdmin):
     ordering = ('owner',)
 
 
-admin.register(MacroGoal, MacroGoalAdmin)
+admin.site.register(MacroGoal, MacroGoalAdmin)
