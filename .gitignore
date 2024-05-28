@@ -5,3 +5,4 @@ env.py
 staticfiles
 .coverage
 htmlcov
+dump.json
