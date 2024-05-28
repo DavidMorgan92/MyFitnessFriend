@@ -146,6 +146,24 @@
       <td>{{ totals.day.sugar_grams }}</td>
       <td></td>
     </tr>
+    <tr>
+      <td class="text-start">Goals</td>
+      <td>{{ goal.calories }}</td>
+      <td>{{ goal.carbs_grams }}</td>
+      <td>{{ goal.fat_grams }}</td>
+      <td>{{ goal.protein_grams }}</td>
+      <td>{{ goal.sodium_milligrams }}</td>
+      <td>{{ goal.sugar_grams }}</td>
+    </tr>
+    <tr>
+      <td class="text-start">Remaining</td>
+      <td {% if remaining.calories < 0 %}class="text-danger fw-bold"{% endif %}>{{ remaining.calories }}</td>
+      <td {% if remaining.carbs_grams < 0 %}class="text-danger fw-bold"{% endif %}></0>{{ remaining.carbs_grams }}</td>
+      <td {% if remaining.fat_grams < 0 %}class="text-danger fw-bold"{% endif %}></0>{{ remaining.fat_grams }}</td>
+      <td {% if remaining.protein_grams < 0 %}class="text-danger fw-bold"{% endif %}></0>{{ remaining.protein_grams }}</td>
+      <td {% if remaining.sodium_milligrams < 0 %}class="text-danger fw-bold"{% endif %}></0>{{ remaining.sodium_milligrams }}</td>
+      <td {% if remaining.sugar_grams < 0 %}class="text-danger fw-bold"{% endif %}></0>{{ remaining.sugar_grams }}</td>
+    </tr>
   </table>
 </div>
 

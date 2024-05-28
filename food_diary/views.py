@@ -3,6 +3,7 @@ from allauth.account.decorators import login_required
 import datetime
 from .models import FoodDiary, FoodDiaryEntry
 from .forms import AddEntryForm
+from goals.models import MacroGoal
 from url_tools import reverse_with_params
 
 
@@ -11,7 +12,7 @@ def index(request):
     # Load diary for the given date or today if none is given
     date = datetime.datetime.strptime(
         request.GET['date'], '%Y-%m-%d') if request.GET and 'date' in request.GET else datetime.date.today()
-
+    
     # By default use empty arrays for the day's diary entries
     context = {
         'date': date,
@@ -19,6 +20,7 @@ def index(request):
         'lunch': [],
         'dinner': [],
         'snacks': [],
+        'goal': request.user.macrogoal,
     }
 
     # Get the food diary for the requesting user with the chosen date
@@ -105,6 +107,15 @@ def index(request):
         'dinner': dinner_totals,
         'snacks': snacks_totals,
         'day': day_totals,
+    }
+
+    context['remaining'] = {
+        'calories': request.user.macrogoal.calories - day_totals['calories'],
+        'carbs_grams': request.user.macrogoal.carbs_grams - day_totals['carbs_grams'],
+        'fat_grams': request.user.macrogoal.fat_grams - day_totals['fat_grams'],
+        'protein_grams': request.user.macrogoal.protein_grams - day_totals['protein_grams'],
+        'sodium_milligrams': request.user.macrogoal.sodium_milligrams - day_totals['sodium_milligrams'],
+        'sugar_grams': request.user.macrogoal.sugar_grams - day_totals['sugar_grams'],
     }
 
     return render(request, 'food_diary/index.html', context)
