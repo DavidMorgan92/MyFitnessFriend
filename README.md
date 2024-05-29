@@ -18,7 +18,6 @@ Access the live deployment here: <https://my-fitness-friend-552c745245e2.herokua
   - [Elephant SQL](#elephant-sql)
   - [Stripe](#stripe)
 - [Testing](#testing)
-- [Defects](#defects)
 
 ## UX
 
