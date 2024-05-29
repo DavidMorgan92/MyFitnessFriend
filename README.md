@@ -287,8 +287,3 @@ Ran 62 tests in 30.614s
 OK
 Destroying test database for alias 'default'...
 ```
-
-## Defects
-
-1. I could not get real emails working in the production environment, so they are disabled.
-2. Google sign in works when running the program locally but not in the production environment.
