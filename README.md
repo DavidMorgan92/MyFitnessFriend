@@ -230,7 +230,7 @@ The default Bootstrap scheme will be used in order to deliver a minimum viable p
 
 ## Deployment
 
-The website is deployed on Heroku here: <https://my-fitness-friend-552c745245e2.herokuapp.com/>
+The website is deployed on Heroku here: <https://my-fitness-friend-2-48df58802784.herokuapp.com/>
 
 ### Environment variables
 
