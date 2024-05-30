@@ -148,7 +148,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Food Diary</summary>
 
-![Food Diary](documentation/images/Food Diary.png)
+![Food Diary](documentation/images/Food-Diary.png)
 
 </details>
 
@@ -172,7 +172,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Search Products</summary>
 
-![Search Products](documentation/images/Search Products.png)
+![Search Products](documentation/images/Search-Products.png)
 
 </details>
 
@@ -180,7 +180,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Product Details</summary>
 
-![Product Details](documentation/images/Product Details.png)
+![Product Details](documentation/images/Product-Details.png)
 
 </details>
 
@@ -220,7 +220,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Password Reset</summary>
 
-![Password Reset](documentation/images/Password Reset.png)
+![Password Reset](documentation/images/Password-Reset.png)
 
 </details>
 
