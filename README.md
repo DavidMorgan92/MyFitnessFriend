@@ -234,6 +234,8 @@ The website is deployed on Heroku here: <https://my-fitness-friend-552c745245e2.
 
 ### Environment variables
 
+These environment variables must be set.
+
 | Name                  | Description                   |
 | --------------------- | ----------------------------- |
 | ENVIRONMENT           | 'Development' or 'Production' |
@@ -251,6 +253,30 @@ The website is deployed on Heroku here: <https://my-fitness-friend-552c745245e2.
 | EMAIL_HOST            | SMTP mail host                |
 | EMAIL_USER            | SMTP mail user name           |
 | EMAIL_PASSWORD        | SMTP mail password            |
+
+#### ENVIRONMENT
+
+The ENVIRONMENT variable should be set to 'Production' for deployment. This will set security settings for the production environment. It will set the database specified by the DB_* environment variables to be used, rather than the SQLite development database. It will also prevent loading of environment variables from the env.py file.
+
+#### SECRET_KEY
+
+[This website](https://djecrety.ir/) can be used to generate a unique key for your deployment.
+
+#### DB_*
+
+The DB_* variables specify the connection settings for the PostgreSQL database that stores data for the website. Run `python manage.py migrate --database primary` to update the database structure for the production database.
+
+#### AWS_* and S3_BUCKET_NAME
+
+These settings control the AWS S3 integration that stores static files and user-uploaded media files. Run `python manage.py collectstatic` to upload the static files to the S3 bucket.
+
+#### STRIPE_*
+
+Set these variables to setup the Stripe integration.
+
+#### EMAIL_*
+
+Set these variables to setup email sending.
 
 ## Technologies Used
 
