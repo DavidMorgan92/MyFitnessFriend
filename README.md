@@ -1,6 +1,8 @@
 # My Fitness Friend
 
-Access the live deployment here: <https://my-fitness-friend-552c745245e2.herokuapp.com/>
+![Am I Responsive?](/documentation/images/responsive.png)
+
+Access the live deployment here: <https://my-fitness-friend-2-48df58802784.herokuapp.com/>
 
 ## Table of Contents
 
@@ -140,7 +142,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Home</summary>
 
-![Home](documentation/images/Home.png)
+![Home](documentation/images/wireframes/home.png)
 
 </details>
 
@@ -148,7 +150,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Food Diary</summary>
 
-![Food Diary](documentation/images/Food-Diary.png)
+![Food Diary](documentation/images/wireframes/food-diary.png)
 
 </details>
 
@@ -156,7 +158,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Goals</summary>
 
-![Goals](documentation/images/Goals.png)
+![Goals](documentation/images/wireframes/goals.png)
 
 </details>
 
@@ -164,7 +166,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Store</summary>
 
-![Store](documentation/images/Store.png)
+![Store](documentation/images/wireframes/store.png)
 
 </details>
 
@@ -172,7 +174,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Search Products</summary>
 
-![Search Products](documentation/images/Search-Products.png)
+![Search Products](documentation/images/wireframes/search-products.png)
 
 </details>
 
@@ -180,7 +182,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Product Details</summary>
 
-![Product Details](documentation/images/Product-Details.png)
+![Product Details](documentation/images/wireframes/product-details.png)
 
 </details>
 
@@ -188,7 +190,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Basket</summary>
 
-![Basket](documentation/images/Basket.png)
+![Basket](documentation/images/wireframes/basket.png)
 
 </details>
 
@@ -196,7 +198,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Checkout</summary>
 
-![Checkout](documentation/images/Checkout.png)
+![Checkout](documentation/images/wireframes/checkout.png)
 
 </details>
 
@@ -204,7 +206,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Login</summary>
 
-![Login](documentation/images/Login.png)
+![Login](documentation/images/wireframes/login.png)
 
 </details>
 
@@ -212,7 +214,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Register</summary>
 
-![Register](documentation/images/Register.png)
+![Register](documentation/images/wireframes/register.png)
 
 </details>
 
@@ -220,7 +222,7 @@ The footer which is common to all pages will include a links to:
 
 <summary>Password Reset</summary>
 
-![Password Reset](documentation/images/Password-Reset.png)
+![Password Reset](documentation/images/wireframes/password-reset.png)
 
 </details>
 
@@ -298,17 +300,4 @@ Set these variables to setup email sending.
 
 ## Testing
 
-Testing will be accomplished entirely by a suite of automated tests. This is the output from a run of the test suite:
-
-```console
-PS C:\Users\david\source\repos\my_fitness_friend> python manage.py test
-Found 62 test(s).
-Creating test database for alias 'default'...
-System check identified no issues (0 silenced).
-..............................................................
-----------------------------------------------------------------------
-Ran 62 tests in 30.614s
-
-OK
-Destroying test database for alias 'default'...
-```
+For more information on testing see the [TESTING.md](TESTING.md) document.
