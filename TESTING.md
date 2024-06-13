@@ -40,25 +40,195 @@ Destroying test database for alias 'default'...
 
 #### My Fitness Friend link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/my-fitness-friend-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/my-fitness-friend-link-works/after.jpg)
+
+</details>
+
 #### Home link works
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/home-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/home-link-works/after.jpg)
+
+</details>
 
 #### Log in link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/log-in-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/log-in-link-works/after.jpg)
+
+</details>
+
 #### Register link works
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/register-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/register-link-works/after.jpg)
+
+</details>
 
 #### Log out link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/log-out-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/log-out-link-works/after.jpg)
+
+</details>
+
 #### My profile link works
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/my-profile-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/my-profile-link-works/after.jpg)
+
+</details>
 
 #### Food Diary link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/food-diary-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/food-diary-link-works/after.jpg)
+
+</details>
+
 #### Goals link works
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/goals-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/goals-link-works/after.jpg)
+
+</details>
 
 #### Store link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/store-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/store-link-works/after.jpg)
+
+</details>
+
 #### Basket link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/basket-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/basket-link-works/after.jpg)
+
+</details>
+
 #### Content attribution links work
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/content-attribution-links-work/before1.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/content-attribution-links-work/after1.jpg)
+
+</details>
+
+<br>
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/layout/content-attribution-links-work/before2.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/layout/content-attribution-links-work/after2.jpg)
+
+</details>
 
 ### Home
 
