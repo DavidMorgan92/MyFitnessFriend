@@ -236,9 +236,51 @@ Destroying test database for alias 'default'...
 
 #### Go to your food diary link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/home/go-to-your-food-diary-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/home/go-to-your-food-diary-link-works/after.jpg)
+
+</details>
+
 #### Go to your goals link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/home/go-to-your-goals-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/home/go-to-your-goals-link-works/after.jpg)
+
+</details>
+
 #### Go to the store link works
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/home/go-to-the-store-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/home/go-to-the-store-link-works/after.jpg)
+
+</details>
 
 ### Login
 
