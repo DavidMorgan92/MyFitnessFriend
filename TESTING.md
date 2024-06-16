@@ -288,15 +288,99 @@ Destroying test database for alias 'default'...
 
 #### Sign up link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/login/sign-up-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/login/sign-up-link-works/after.jpg)
+
+</details>
+
 #### Forgot password link works
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/login/forgot-password-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/login/forgot-password-link-works/after.jpg)
+
+</details>
 
 #### Login Google sign in link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/login/login-google-sign-in-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/login/login-google-sign-in-link-works/after.jpg)
+
+</details>
+
 #### Correct username and password can log in
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/login/correct-username-and-password-can-log-in/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/login/correct-username-and-password-can-log-in/after.jpg)
+
+</details>
 
 #### Incorrect username cannot log in
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/login/incorrect-username-cannot-log-in/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/login/incorrect-username-cannot-log-in/after.jpg)
+
+</details>
+
 #### Incorrect password cannot log in
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/login/incorrect-password-cannot-log-in/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/login/incorrect-password-cannot-log-in/after.jpg)
+
+</details>
 
 ### Register
 
