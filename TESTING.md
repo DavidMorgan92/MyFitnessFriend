@@ -472,7 +472,21 @@ Destroying test database for alias 'default'...
 
 #### Checkout button is disabled when basket is empty
 
+<details>
+<summary>Evidence</summary>
+
+![Evidence](documentation/images/tests/basket/checkout-button-is-disabled-when-basket-is-empty/evidence.jpg)
+
+</details>
+
 #### Checkout button works when basket has items
+
+<details>
+<summary>Evidence</summary>
+
+![Evidence](documentation/images/tests/basket/checkout-button-works-when-basket-has-items/evidence.jpg)
+
+</details>
 
 ### Checkout
 
