@@ -48,9 +48,9 @@ def wizard(request):
         goals = MacroGoal.objects.get_or_create(owner=request.user)[0]
 
         rmr = 10 * form.cleaned_data['weight_kg'] + 6.25 * form.cleaned_data['height_cm'] - 5 * form.cleaned_data['age']
-        rmr -= 161 if form.cleaned_data['gender'] == 1 else -5
+        rmr -= 161 if int(form.cleaned_data['gender']) == 1 else -5
 
-        match form.cleaned_data['activity_level']:
+        match int(form.cleaned_data['activity_level']):
             case 0:
                 rmr *= 1.2
 
@@ -66,7 +66,7 @@ def wizard(request):
             case 4:
                 rmr *= 1.9
 
-        match form.cleaned_data['goal']:
+        match int(form.cleaned_data['goal']):
             case 0:
                 goals.calories = int(rmr - 500)
 
