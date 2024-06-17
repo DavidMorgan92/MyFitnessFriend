@@ -388,13 +388,83 @@ Destroying test database for alias 'default'...
 
 #### Sign in link works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/register/sign-in-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/register/sign-in-link-works/after.jpg)
+
+</details>
+
 #### Register Google sign in link works
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/register/register-google-sign-in-link-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/register/register-google-sign-in-link-works/after.jpg)
+
+</details>
 
 #### Valid input can register
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/register/valid-input-can-register/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/register/valid-input-can-register/after.jpg)
+
+</details>
+
 #### Invalid email cannot register
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/register/invalid-email-cannot-register/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/register/invalid-email-cannot-register/after.jpg)
+
+</details>
+
 #### Invalid username cannot register
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/register/invalid-username-cannot-register/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/register/invalid-username-cannot-register/after.jpg)
+
+</details>
 
 ### Basket
 
