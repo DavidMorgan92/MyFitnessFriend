@@ -632,9 +632,110 @@ Destroying test database for alias 'default'...
 
 #### Goals redirects to login page when user is unauthenticated
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/goals/goals-redirects-to-login-page-when-user-is-unauthenticated/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/goals/goals-redirects-to-login-page-when-user-is-unauthenticated/after.jpg)
+
+</details>
+
 #### Goal wizard form works
 
+The goal wizard formula is as follows:
+
+```default
+rmr = 10 * weight_kg + 6.25 * height_cm - 5 * age
+rmr = rmr + 5 if gender is male
+rmr = rmr - 161 if gender is female
+
+rmr = rmr * 1.2 if activity level is sedentary
+rmr = rmr * 1.357 if activity level is light
+rmr = rmr * 1.55 if activity level is moderate
+rmr = rmr * 1.725 if activity level is very active
+rmr = rmr * 1.9 if activity level is extra active
+
+goal.calories = rmr if goal is to maintain weight
+goal.calories = rmr + 500 if goal is to gain weight
+goal.calories = rmr - 500 if goal is to lose weight
+
+weight_pounds = weight_kg * 2.2
+
+goal.protein_grams = int(weight_pounds * 1.5)
+
+protein_calories = goal.protein_grams * 4
+remaining_calories = goal.calories - protein_calories
+carbs_calories = remaining_calories / 2
+fat_calories = remaining_calories / 2
+
+goal.carbs_grams = int(carbs_calories / 4) - 25
+goal.fat_grams = int(fat_calories / 9)
+goal.sodium_milligrams = 1500
+goal.sugar_grams = 25
+```
+
+According to this formula, the following input should yield the associated output:
+
+```default
+gender = male
+weight kg = 77
+height cm = 180
+age = 32
+activity level = moderate
+goal = to maintain weight
+```
+
+```default
+rmr = (10 * 77 + 6.25 * 180 - 5 * 32 + 5) * 1.55 = 2697
+weight_pounds = 77 * 2.2 = 169.4
+protein_calories = 254 * 4 = 1016
+remaining_calories = 2697 - 1016 = 1681
+carbs_calories = 1681 / 2 = 840.5
+fat_calories = 1681 / 2 = 840.5
+
+calories = 2697
+carbs grams = int(840.5 / 4) - 25 = 185
+fat grams = int(840.5 / 9) = 93
+protein grams = 254
+sodium milligrams = 1500
+sugar grams = 25
+```
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/goals/goal-wizard-form-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/goals/goal-wizard-form-works/after.jpg)
+
+</details>
+
 #### Macro goals form works
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/goals/macro-goals-form-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/goals/macro-goals-form-works/after.jpg)
+
+</details>
 
 ### Password Reset
 
