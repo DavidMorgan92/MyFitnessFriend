@@ -514,19 +514,117 @@ Destroying test database for alias 'default'...
 
 #### Food diary redirects to login page when user is unauthenticated
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/food-diary/food-diary-redirects-to-login-page-when-user-is-unauthenticated/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/food-diary/food-diary-redirects-to-login-page-when-user-is-unauthenticated/after.jpg)
+
+</details>
+
 #### User can add food to breakfast
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/food-diary/user-can-add-food-to-breakfast/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/food-diary/user-can-add-food-to-breakfast/after.jpg)
+
+</details>
 
 #### User can add food to lunch
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/food-diary/user-can-add-food-to-lunch/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/food-diary/user-can-add-food-to-lunch/after.jpg)
+
+</details>
+
 #### User can add food to dinner
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/food-diary/user-can-add-food-to-dinner/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/food-diary/user-can-add-food-to-dinner/after.jpg)
+
+</details>
 
 #### User can add food to snacks
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/food-diary/user-can-add-food-to-snacks/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/food-diary/user-can-add-food-to-snacks/after.jpg)
+
+</details>
+
 #### Totals are calculated correctly
+
+<details>
+<summary>Evidence</summary>
+
+![Evidence](documentation/images/tests/food-diary/totals-are-calculated-correctly/evidence.jpg)
+
+</details>
 
 #### Remaining values are calculated correctly
 
+<details>
+<summary>Evidence</summary>
+
+![Evidence](documentation/images/tests/food-diary/remaining-values-are-calculated-correctly/evidence.jpg)
+
+</details>
+
 #### Diary for the chosen date is loaded when the chosen date is changed
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/food-diary/diary-for-the-chosen-date-is-loaded-when-the-chosen-date-is-changed/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/food-diary/diary-for-the-chosen-date-is-loaded-when-the-chosen-date-is-changed/after.jpg)
+
+</details>
 
 ### Goals
 
