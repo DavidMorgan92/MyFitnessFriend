@@ -494,6 +494,20 @@ Destroying test database for alias 'default'...
 
 #### Valid input can checkout
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/checkout/valid-input-can-checkout/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/checkout/valid-input-can-checkout/after.jpg)
+
+</details>
+
 ### Food Diary
 
 [Lighthouse Report](documentation/lighthouse-reports/food-diary.pdf)
