@@ -787,14 +787,98 @@ sugar grams = 25
 
 #### Pagination works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/search-products/pagination-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/search-products/pagination-works/after.jpg)
+
+</details>
+
 #### Sorting by price low to high works
+
+<details>
+<summary>Evidence 1</summary>
+
+![Evidence 1](documentation/images/tests/search-products/sorting-by-price-low-to-high-works/evidence1.jpg)
+
+</details>
+
+<details>
+<summary>Evidence 2</summary>
+
+![Evidence 2](documentation/images/tests/search-products/sorting-by-price-low-to-high-works/evidence2.jpg)
+
+</details>
 
 #### Sorting by price high to low works
 
+<details>
+<summary>Evidence 1</summary>
+
+![Evidence 1](documentation/images/tests/search-products/sorting-by-price-high-to-low-works/evidence1.jpg)
+
+</details>
+
+<details>
+<summary>Evidence 2</summary>
+
+![Evidence 2](documentation/images/tests/search-products/sorting-by-price-high-to-low-works/evidence2.jpg)
+
+</details>
+
 #### Items per page selector works
+
+<details>
+<summary>Before 1</summary>
+
+![Before 1](documentation/images/tests/search-products/items-per-page-selector-works/before1.jpg)
+
+</details>
+
+<details>
+<summary>Before 2</summary>
+
+![Before 2](documentation/images/tests/search-products/items-per-page-selector-works/before2.jpg)
+
+</details>
+
+<details>
+<summary>After 1</summary>
+
+![After 1](documentation/images/tests/search-products/items-per-page-selector-works/after1.jpg)
+
+</details>
+
+<details>
+<summary>After 2</summary>
+
+![After 2](documentation/images/tests/search-products/items-per-page-selector-works/after2.jpg)
+
+</details>
 
 ### Store
 
 [Lighthouse Report](documentation/lighthouse-reports/store.pdf)
 
 #### Featured links work
+
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/store/featured-links-work/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/store/featured-links-work/after.jpg)
+
+</details>
