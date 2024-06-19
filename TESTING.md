@@ -12,7 +12,6 @@
   - [Checkout](#checkout)
   - [Food Diary](#food-diary)
   - [Goals](#goals)
-  - [Password Reset](#password-reset)
   - [Product Details](#product-details)
   - [Search Products](#search-products)
   - [Store](#store)
@@ -737,25 +736,50 @@ sugar grams = 25
 
 </details>
 
-### Password Reset
-
-[Lighthouse Report](documentation/lighthouse-reports/password-reset.pdf)
-
-#### Password reset redirects to login page when user is unauthenticated
-
-#### Change password form works
-
-#### Link to forgot password works
-
 ### Product Details
 
 [Lighthouse Report](documentation/lighthouse-reports/product-details.pdf)
 
 #### Add to basket button works
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/product-details/add-to-basket-button-works/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/product-details/add-to-basket-button-works/after.jpg)
+
+</details>
+
 #### Variant selectors work
 
+<details>
+<summary>Before</summary>
+
+![Before](documentation/images/tests/product-details/variant-selectors-work/before.jpg)
+
+</details>
+
+<details>
+<summary>After</summary>
+
+![After](documentation/images/tests/product-details/variant-selectors-work/after.jpg)
+
+</details>
+
 #### Price is calculated correctly
+
+<details>
+<summary>Evidence</summary>
+
+![Evidence](documentation/images/tests/product-details/price-is-calculated-correctly/evidence.jpg)
+
+</details>
 
 ### Search Products
 
